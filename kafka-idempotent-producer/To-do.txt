@@ -1,0 +1,34 @@
+1. Created Kafka 
+Steps :- 
+
+1. Install Kafka
+
+2. Change the logs directory in server.properties.
+
+3. create Random id :-
+~~~
+./kafka-storage.sh random-uuid
+~~~
+
+4. Add random uuid to server.properties
+
+~~~~
+ ./kafka-storage.sh format -t znoEKh7DRsSLxBH93-CwLQ -c ../config/server.properties 
+~~~~
+
+5. Start Kafka
+~~~
+./kafka-server-start.sh ../config/server.properties
+~~~
+
+6. Create topic
+
+~~~
+./kafka-topic.sh --create --topic orders-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+~~~
+
+7. List the broker
+
+~~~
+./kafka-topic.sh --list --bootstrap-server localhost:9092 --topic orders-topic --from-beginning
+~~~
